@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Scrollable Horizontal Navigation for Categories */
+.category-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.category-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.category-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.category-scroll::-webkit-scrollbar-thumb {
+  background: #cc2b2b;
+  border-radius: 10px;
+}
+
+.category-scroll button,
+.category-scroll a {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Container for category filters */
+.category-filters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 4px 0 12px 0;
+  margin-bottom: 16px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-filters::-webkit-scrollbar {
+  height: 3px;
+}
+
+.category-filters button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Ensure all content containers are visible */
+main, section, div {
+  max-width: 100%;
+  overflow-x: visible;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+  
+  main {
+    padding-bottom: 80px !important;
+  }
+  
+  /* Ensure all scrollable areas work */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Category buttons container */
+  .category-filters,
+  .category-scroll {
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  
+  /* Make cards stack properly */
+  .grid {
+    gap: 0.75rem;
+  }
+  
+  .grid-cols-2 {
+    gap: 0.75rem;
+  }
+  
+  /* Prevent any hidden content */
+  .overflow-hidden {
+    overflow: visible !important;
+  }
+  
+  /* Ensure text is readable */
+  p, h1, h2, h3, span, div {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cc2b2b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d8a43f;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Touch targets */
+@media (max-width: 768px) {
+  button, 
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Utility classes */
+.break-words {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Responsive grid */
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 400px) {
+  .grid-cols-2 {
+    gap: 0.5rem;
+  }
+}
